@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <p v-else>Sorry! Nothing found...</p>
+        <p v-else>Sorry! Nothing found...<router-link :to="`/`">Go to Homepage</router-link></p>
       </div>
     </section>
   </div>

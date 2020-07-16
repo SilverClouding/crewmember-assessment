@@ -1,23 +1,53 @@
 <template>
   <div>
-    <nuxt />
+    <div>
+      <nuxt />
+    </div>
+    <div class="container">
+      <div class="selected-products-area">
+        <h1><span>Selected Products </span><span v-if="quantityTotal">({{ quantityTotal }})</span></h1>
+        <div class="columns">
+          <div class="column is-12">
+            <!-- ADD A COMPONENT TO VIEW SELECTED PRODUCTS HERE -->
+            <div class="selected-products-wrapper">
+              <selected-products />
+            </div>
+          </div>
+        </div>
+        <h1>
+          <span>Total Value: </span>
+          <span>
+            <!-- CALCULATE TOTAL VALUE OF SELECTED PRODUCTS -->
+            {{ cartSubtotal }}
+          </span>
+        </h1>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-import { mapMutations, mapActions } from 'vuex'
-import localforage from 'localforage'
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+import SelectedProducts from '~/components/SelectedProducts'
 export default {
+  components: {
+    SelectedProducts
+  },
+  computed: {
+    ...mapState('cart', ['lineItems']),
+    ...mapGetters('cart', ['quantityTotal', 'cartSubtotal'])
+  },
   methods: {
     ...mapMutations('cart', ['hideCart']),
     ...mapActions('cart', ['updateLocalCart'])
   },
   mounted() {
+    //console.log(this);
     this.updateLocalCart()
     this.hideCart()
   }
 }
 </script>
-<style>
+<style lang="scss">
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -68,5 +98,15 @@ html {
 
 .container {
   margin: 1.5rem auto;
+}
+
+.selected-products-area {
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 4rem;
+  }
+  .selected-products-wrapper {
+    margin: 0 6rem;
+  }
 }
 </style>
