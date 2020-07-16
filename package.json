@@ -1,0 +1,22 @@
+{
+  "name": "crewmember-assessment-nuxt",
+  "version": "1.0.0",
+  "description": "Nacelle Crewmember Assessment",
+  "author": "Levi Whalen",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/bulma": "^1.2.1",
+    "localforage": "^1.7.4",
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.0.0",
+    "sass-loader": "^8.0.0",
+    "uuidv4": "^6.1.1"
+  },
+  "devDependencies": {}
+}
