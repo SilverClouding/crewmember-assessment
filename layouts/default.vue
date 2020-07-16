@@ -41,7 +41,6 @@ export default {
     ...mapActions('cart', ['updateLocalCart'])
   },
   mounted() {
-    //console.log(this);
     this.updateLocalCart()
     this.hideCart()
   }
