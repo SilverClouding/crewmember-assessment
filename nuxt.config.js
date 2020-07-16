@@ -1,3 +1,9 @@
+import productData from './static/products.js'
+let dynamicRoutes = () => {
+  return new Promise(resolve => {
+    resolve(productData.products.map(el => `products/${el.id}`))
+  })
+}
 export default {
   mode: "universal",
   /*
@@ -15,6 +21,9 @@ export default {
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+  },
+  generate: {
+    routes: dynamicRoutes
   },
   /*
    ** Customize the progress-bar color
